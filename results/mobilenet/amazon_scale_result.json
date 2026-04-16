@@ -1,0 +1,38 @@
+{
+  "tiny": {
+    "total": 1303,
+    "detected": 168,
+    "missed": 1135,
+    "fire_detection_rate": 0.1289332310053722,
+    "avg_confidence": 0.9071809009506624,
+    "avg_confidence_detected": 0.7842186086234593,
+    "avg_confidence_missed": 0.9253814869515171
+  },
+  "small": {
+    "total": 1618,
+    "detected": 608,
+    "missed": 1010,
+    "fire_detection_rate": 0.3757725587144623,
+    "avg_confidence": 0.9033629822789959,
+    "avg_confidence_detected": 0.9040309267216607,
+    "avg_confidence_missed": 0.9029608929511344
+  },
+  "medium": {
+    "total": 1239,
+    "detected": 496,
+    "missed": 743,
+    "fire_detection_rate": 0.4003228410008071,
+    "avg_confidence": 0.8521376692835028,
+    "avg_confidence_detected": 0.816740965170245,
+    "avg_confidence_missed": 0.8757672321908727
+  },
+  "large": {
+    "total": 52,
+    "detected": 39,
+    "missed": 13,
+    "fire_detection_rate": 0.75,
+    "avg_confidence": 0.8692156981963378,
+    "avg_confidence_detected": 0.8724357195389576,
+    "avg_confidence_missed": 0.8595556341684781
+  }
+}
