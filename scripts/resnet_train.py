@@ -29,11 +29,11 @@ transform_val = transforms.Compose([
 
 train_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "train"), transform=transform_train)
 val_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "val"), transform=transform_val)
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
+val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=2, pin_memory=True)
 
 model = timm.create_model("resnet50.a1_in1k", pretrained=True, num_classes=2)
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
 optimizer = torch.optim.AdamW(model.parameters(), lr=LR)
