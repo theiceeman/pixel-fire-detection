@@ -8,7 +8,7 @@ from PIL import Image
 import timm
 
 WEIGHTS_PATH = "./runs/classify/resnet50/weights/best.pt"
-SCALE_DIR = "dataset/snow_scale_eval"
+SCALE_DIR = "dataset/camp_scale_eval"
 OUTPUT_PATH = "scale_result.json"
 IMG_SIZE = 224
 SCALES = ["tiny", "small", "medium", "large"]

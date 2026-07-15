@@ -1,0 +1,136 @@
+{
+  "Amazon": {
+    "ResNet50": {
+      "pearson_r": 0.9548,
+      "p_value": 0.0452,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.2003,
+        "small": 0.5019,
+        "medium": 0.5432,
+        "large": 1.0
+      }
+    },
+    "EfficientNetV2": {
+      "pearson_r": 0.9481,
+      "p_value": 0.0519,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.5564,
+        "small": 0.8127,
+        "medium": 0.9661,
+        "large": 1.0
+      }
+    },
+    "MobileNetV3": {
+      "pearson_r": 0.9539,
+      "p_value": 0.0461,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.1289,
+        "small": 0.3758,
+        "medium": 0.4003,
+        "large": 0.75
+      }
+    },
+    "YOLOv8": {
+      "pearson_r": 0.8098,
+      "p_value": 0.1902,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.2456,
+        "small": 0.44,
+        "medium": 0.406,
+        "large": 0.4615
+      }
+    }
+  },
+  "Camp": {
+    "ResNet50": {
+      "pearson_r": 0.9417,
+      "p_value": 0.0583,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.0,
+        "small": 0.2632,
+        "medium": 0.8452,
+        "large": 0.8333
+      }
+    },
+    "EfficientNetV2": {
+      "pearson_r": 0.9288,
+      "p_value": 0.0712,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.5,
+        "small": 0.6842,
+        "medium": 0.8452,
+        "large": 0.8333
+      }
+    },
+    "MobileNetV3": {
+      "pearson_r": 0.7838,
+      "p_value": 0.2162,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.0,
+        "small": 0.4211,
+        "medium": 0.6905,
+        "large": 0.5
+      }
+    },
+    "YOLOv8": {
+      "pearson_r": 0.9245,
+      "p_value": 0.0755,
+      "n": 4,
+      "detection_rates": {
+        "tiny": 0.0,
+        "small": 0.3158,
+        "medium": 0.9048,
+        "large": 0.8333
+      }
+    }
+  },
+  "Snow": {
+    "ResNet50": {
+      "pearson_r": 0.562,
+      "p_value": 0.62,
+      "n": 3,
+      "detection_rates": {
+        "tiny": 0.0058,
+        "small": 0.0208,
+        "medium": 0.0143
+      }
+    },
+    "EfficientNetV2": {
+      "pearson_r": 0.9913,
+      "p_value": 0.0838,
+      "n": 3,
+      "detection_rates": {
+        "tiny": 0.7616,
+        "small": 0.873,
+        "medium": 0.9429
+      }
+    },
+    "MobileNetV3": {
+      "pearson_r": 0.9362,
+      "p_value": 0.2285,
+      "n": 3,
+      "detection_rates": {
+        "tiny": 0.0407,
+        "small": 0.3253,
+        "medium": 0.3857
+      }
+    },
+    "YOLOv8": {
+      "pearson_r": 0.9999,
+      "p_value": 0.0096,
+      "n": 3,
+      "detection_rates": {
+        "tiny": 0.5291,
+        "small": 0.6974,
+        "medium": 0.8571
+      }
+    }
+  }
+}
