@@ -6,6 +6,8 @@ from ultralytics import YOLO
 OUT_DIR = "dataset/multiscene"
 CLASSES = ["fire", "non_fire"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
+# set True only if you want to wipe and rebuild from local sources
+FORCE_REBUILD = False
 
 
 def copy_dir_images(src_dir, dst_dir, prefix=""):
@@ -33,34 +35,49 @@ def copy_dir_images(src_dir, dst_dir, prefix=""):
     return n
 
 
-# rebuild multiscene dataset
-if os.path.exists(OUT_DIR):
+def multiscene_ready(path):
+    for split in ("train", "val"):
+        for cls in CLASSES:
+            d = os.path.join(path, split, cls)
+            if not os.path.isdir(d):
+                return False
+            if not any(not f.startswith(".") for f in os.listdir(d)):
+                return False
+    return True
+
+
+# build only if missing (keeps Colab-uploaded multiscene intact)
+if FORCE_REBUILD and os.path.exists(OUT_DIR):
     shutil.rmtree(OUT_DIR)
 
+if multiscene_ready(OUT_DIR):
+    print(f"Using existing {OUT_DIR} (set FORCE_REBUILD=True to rebuild)")
+else:
+    if os.path.exists(OUT_DIR):
+        shutil.rmtree(OUT_DIR)
+
+    for split in ("train", "val"):
+        for cls in CLASSES:
+            os.makedirs(os.path.join(OUT_DIR, split, cls), exist_ok=True)
+
+    # val = original val only
+    for cls in CLASSES:
+        n = copy_dir_images(f"dataset/val/{cls}", os.path.join(OUT_DIR, "val", cls))
+        print(f"val/{cls}: {n} from dataset/val")
+
+    # train = original + forest + cctv(fire only)
+    for cls in CLASSES:
+        n1 = copy_dir_images(f"dataset/train/{cls}", os.path.join(OUT_DIR, "train", cls))
+        n2 = copy_dir_images(f"dataset/forest_train/{cls}", os.path.join(OUT_DIR, "train", cls), prefix="forest_")
+        print(f"train/{cls}: {n1} original + {n2} forest")
+
+    n_cctv = copy_dir_images("images/cctv", os.path.join(OUT_DIR, "train", "fire"), prefix="cctv_")
+    print(f"train/fire: +{n_cctv} cctv")
+
 for split in ("train", "val"):
     for cls in CLASSES:
-        os.makedirs(os.path.join(OUT_DIR, split, cls), exist_ok=True)
-
-# val = original val only
-for cls in CLASSES:
-    n = copy_dir_images(f"dataset/val/{cls}", os.path.join(OUT_DIR, "val", cls))
-    print(f"val/{cls}: {n} from dataset/val")
-
-# train = original + forest + cctv(fire only)
-for cls in CLASSES:
-    n1 = copy_dir_images(f"dataset/train/{cls}", os.path.join(OUT_DIR, "train", cls))
-    n2 = copy_dir_images(f"dataset/forest_train/{cls}", os.path.join(OUT_DIR, "train", cls), prefix="forest_")
-    print(f"train/{cls}: {n1} original + {n2} forest")
-
-n_cctv = copy_dir_images("images/cctv", os.path.join(OUT_DIR, "train", "fire"), prefix="cctv_")
-print(f"train/fire: +{n_cctv} cctv")
-
-for split in ("train", "val"):
-    for cls in CLASSES:
-        count = len([
-            f for f in os.listdir(os.path.join(OUT_DIR, split, cls))
-            if not f.startswith(".")
-        ])
+        d = os.path.join(OUT_DIR, split, cls)
+        count = len([f for f in os.listdir(d) if not f.startswith(".")]) if os.path.isdir(d) else 0
         print(f"{OUT_DIR}/{split}/{cls}: {count}")
 
 # train YOLO from pretrained (same recipe as baseline)
