@@ -1,0 +1,12 @@
+{
+  "fire_detection_rate": 1.0,
+  "error_warning_rate": 0.08450704225352113,
+  "accuracy": 0.9508196721311475,
+  "precision": 0.8947368421052632,
+  "recall": 1.0,
+  "f1_score": 0.9444444444444444,
+  "tp": 51,
+  "tn": 65,
+  "fp": 6,
+  "fn": 0
+}

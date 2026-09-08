@@ -7,9 +7,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/mobilenetv4/weights/best.pt"
-SCALE_DIR = "dataset/snow_scale_eval"
-OUTPUT_PATH = "scale_result.json"
+WEIGHTS_PATH = "./runs/classify/mobilenetv4_transfer_forest_to_flame/weights/best.pt"
+SCALE_DIR = "dataset/flame_scale_eval"
+OUTPUT_PATH = "forest_to_flame_transfer_result.json"
 IMG_SIZE = 224
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}

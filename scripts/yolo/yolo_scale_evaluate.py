@@ -3,9 +3,9 @@ import json
 import os
 from ultralytics import YOLO
 
-WEIGHTS_PATH = "./runs/classify/train/weights/best.pt"
-SCALE_DIR = "dataset/camp_scale_eval"
-OUTPUT_PATH = "scale_result.json"
+WEIGHTS_PATH = "./runs/classify/transfer_forest/weights/best.pt"
+SCALE_DIR = "dataset/flame_scale_eval"
+OUTPUT_PATH = "flame_transfer_result.json"
 FIRE_CLASS = "fire"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
