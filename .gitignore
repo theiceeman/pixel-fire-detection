@@ -4,3 +4,10 @@
 dataset/
 images/
 dataset.zip
+
+# model weights / checkpoints (keep local, don't push)
+*.pt
+*.pth
+*.onnx
+runs/**/weights/
+yolo*.pt
