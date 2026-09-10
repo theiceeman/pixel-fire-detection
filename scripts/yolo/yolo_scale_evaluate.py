@@ -1,11 +1,11 @@
-# python3 ./scale_evaluate.py
+# python3 ./scripts/yolo/yolo_scale_evaluate.py
 import json
 import os
 from ultralytics import YOLO
 
-WEIGHTS_PATH = "./runs/classify/transfer_forest/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/yolo_multiscene/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "flame_transfer_result.json"
+OUTPUT_PATH = "yolo_flame_multiscene_result.json"
 FIRE_CLASS = "fire"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}

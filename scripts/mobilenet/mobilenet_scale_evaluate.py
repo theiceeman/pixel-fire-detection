@@ -1,4 +1,4 @@
-# python3 ./scripts/mobilenet_scale_evaluate.py
+# python3 ./scripts/mobilenet/mobilenet_scale_evaluate.py
 import json
 import os
 import torch
@@ -7,9 +7,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/mobilenetv4_transfer_forest_to_flame/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/mobilenetv4_multiscene/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "forest_to_flame_transfer_result.json"
+OUTPUT_PATH = "yolo_flame_multiscene_result.json"
 IMG_SIZE = 224
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
