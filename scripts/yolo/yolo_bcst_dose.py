@@ -1,6 +1,6 @@
 # python3 ./scripts/yolo/yolo_bcst_dose.py
 # Uses dataset/bcst_aug with train/{fire,non_fire,firelike} + val/{fire,non_fire}.
-# For each dose N: mix N firelike into non_fire (600/600), train, eval flame.
+# For each dose N: mix N firelike into non_fire (600/600), train only.
 import json
 import os
 import random
@@ -12,12 +12,9 @@ from ultralytics import YOLO
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "dataset" / "bcst_aug"
 TMP = ROOT / "dataset" / "bcst_dose_tmp"
-SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
 RESULTS_DIR = ROOT / "results" / "yolo"
 DOSES = [30, 60, 90]
 SEED = 42
-FIRE_CLASS = "fire"
-SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
 
@@ -49,59 +46,6 @@ def build_dose(n: int, firelike_pick: list[str], non_fire_pick: list[str]) -> Pa
     link_all(SRC / "val" / "fire", out / "val" / "fire")
     link_all(SRC / "val" / "non_fire", out / "val" / "non_fire")
     return out
-
-
-def evaluate(weights: Path, output_path: Path):
-    model = YOLO(str(weights))
-    results = {}
-
-    for scale in SCALES:
-        scale_dir = SCALE_DIR / scale
-        detected = missed = 0
-        conf_det, conf_miss = [], []
-
-        if not scale_dir.is_dir():
-            results[scale] = {
-                "total": 0,
-                "detected": 0,
-                "missed": 0,
-                "fire_detection_rate": 0,
-                "avg_confidence": 0,
-                "avg_confidence_detected": 0,
-                "avg_confidence_missed": 0,
-            }
-            continue
-
-        for filename in os.listdir(scale_dir):
-            if filename.startswith(".") or Path(filename).suffix.lower() not in VALID_EXT:
-                continue
-            preds = model.predict(str(scale_dir / filename), verbose=False)
-            predicted = model.names[preds[0].probs.top1]
-            conf = float(preds[0].probs.top1conf)
-            if predicted == FIRE_CLASS:
-                detected += 1
-                conf_det.append(conf)
-            else:
-                missed += 1
-                conf_miss.append(conf)
-
-        total = detected + missed
-        all_conf = conf_det + conf_miss
-        results[scale] = {
-            "total": total,
-            "detected": detected,
-            "missed": missed,
-            "fire_detection_rate": detected / total if total else 0,
-            "avg_confidence": sum(all_conf) / len(all_conf) if all_conf else 0,
-            "avg_confidence_detected": sum(conf_det) / len(conf_det) if conf_det else 0,
-            "avg_confidence_missed": sum(conf_miss) / len(conf_miss) if conf_miss else 0,
-        }
-        print(f"  {scale}: {detected}/{total} ({results[scale]['fire_detection_rate']:.3f})")
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, "w") as f:
-        json.dump(results, f, indent=2)
-    print(f"  saved {output_path}")
 
 
 def main():
@@ -138,9 +82,7 @@ def main():
             name=run_name,
             exist_ok=True,
         )
-
-        weights = ROOT / run_name / "weights" / "best.pt"
-        evaluate(weights, RESULTS_DIR / f"flame_bcst_{n}_result.json")
+        print(f"Done. Weights: {run_name}/weights/best.pt")
 
     with open(RESULTS_DIR / "bcst_dose_manifest.json", "w") as f:
         json.dump(manifest, f, indent=2)
