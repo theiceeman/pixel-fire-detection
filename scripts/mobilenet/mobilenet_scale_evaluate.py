@@ -7,9 +7,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/mobilenetv4_multiscene/best.pt"
+WEIGHTS_PATH = "./runs/classify/mobilenetv4_bcst/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "yolo_flame_multiscene_result.json"
+OUTPUT_PATH = "mobilenet_flame_bcst_result.json"
 IMG_SIZE = 224
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
