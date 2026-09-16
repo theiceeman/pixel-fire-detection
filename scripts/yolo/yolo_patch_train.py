@@ -63,7 +63,8 @@ def crop_rows(picked, dest_dir: Path):
     opened = {}
     saved = 0
     for i, row in enumerate(picked):
-        src = IMAGES_DIR / row["image"]
+        folder, name = row["image"].split("/", 1)
+        src = IMAGES_DIR / folder.lower() / name
         if not src.exists():
             raise SystemExit(f"Missing image: {src}")
         if src not in opened:
