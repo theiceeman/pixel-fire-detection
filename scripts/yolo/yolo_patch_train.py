@@ -74,6 +74,8 @@ def crop_rows(picked, dest_dir: Path):
         if x + s > img.width or y + s > img.height:
             continue
         crop = img.crop((x, y, x + s, y + s))
+        if s < 10:
+            crop = crop.resize((32, 32), Image.NEAREST)
         name = f"{src.stem}_{x}_{y}_{i}.png"
         crop.save(dest_dir / name)
         saved += 1
