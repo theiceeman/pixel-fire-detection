@@ -11,3 +11,4 @@ dataset.zip
 *.onnx
 runs/**/weights/
 yolo*.pt
+models/

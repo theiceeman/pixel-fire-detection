@@ -3,9 +3,9 @@ import json
 import os
 from ultralytics import YOLO
 
-WEIGHTS_PATH = "./runs/classify/yolo_bcst_90/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/yolo_patch_32/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "yolo_flame_bcst_90_result.json"
+OUTPUT_PATH = "yolo_flame_patch_32_result.json"
 FIRE_CLASS = "fire"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
