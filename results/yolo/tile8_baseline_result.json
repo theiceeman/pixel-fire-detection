@@ -1,0 +1,53 @@
+{
+  "model": "train",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "tiny": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 13.05,
+    "avg_max": 0.8489532202482224,
+    "avg_tile_score": 0.26102908759935106
+  },
+  "small": {
+    "total": 20,
+    "detected": 18,
+    "missed": 2,
+    "fire_detection_rate": 0.9,
+    "avg_hits": 12.45,
+    "avg_max": 0.8111155867576599,
+    "avg_tile_score": 0.2522511990804787
+  },
+  "medium": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 13.0,
+    "avg_max": 0.8260387361049653,
+    "avg_tile_score": 0.29562943855809676
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 2,
+    "correct": 3,
+    "false_alarm_rate": 0.4,
+    "avg_hits": 3.0,
+    "avg_max": 0.7353410720825195,
+    "avg_tile_score": 0.30040301812113673
+  }
+}

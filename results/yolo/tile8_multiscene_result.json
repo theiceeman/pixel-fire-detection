@@ -1,0 +1,53 @@
+{
+  "model": "yolo_multiscene",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "tiny": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 2091.1,
+    "avg_max": 0.9975369930267334,
+    "avg_tile_score": 0.6054104193692015
+  },
+  "small": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 2692.65,
+    "avg_max": 0.9981399118900299,
+    "avg_tile_score": 0.7226668853129511
+  },
+  "medium": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 2361.45,
+    "avg_max": 0.9980135589838028,
+    "avg_tile_score": 0.6373117604220233
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 5,
+    "correct": 0,
+    "false_alarm_rate": 1.0,
+    "avg_hits": 1675.6,
+    "avg_max": 0.9918292164802551,
+    "avg_tile_score": 0.49033849995929557
+  }
+}

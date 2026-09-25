@@ -1,0 +1,53 @@
+{
+  "model": "yolo_patch_8",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "tiny": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 8.4,
+    "avg_max": 0.9614635676145553,
+    "avg_tile_score": 0.3372803678639078
+  },
+  "small": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 109.75,
+    "avg_max": 0.9730589836835861,
+    "avg_tile_score": 0.27948702239540096
+  },
+  "medium": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 50.65,
+    "avg_max": 0.9751774400472641,
+    "avg_tile_score": 0.29498611517268647
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 0,
+    "correct": 5,
+    "false_alarm_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.6049244284629822,
+    "avg_tile_score": 0.23971621591815212
+  }
+}

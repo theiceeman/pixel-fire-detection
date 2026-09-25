@@ -1,0 +1,53 @@
+{
+  "model": "yolo_bcst_30",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "tiny": {
+    "total": 20,
+    "detected": 0,
+    "missed": 20,
+    "fire_detection_rate": 0.0,
+    "avg_hits": 0.35,
+    "avg_max": 0.636954540014267,
+    "avg_tile_score": 0.03458739090056405
+  },
+  "small": {
+    "total": 20,
+    "detected": 4,
+    "missed": 16,
+    "fire_detection_rate": 0.2,
+    "avg_hits": 0.65,
+    "avg_max": 0.6445095106959343,
+    "avg_tile_score": 0.03892802896809915
+  },
+  "medium": {
+    "total": 20,
+    "detected": 0,
+    "missed": 20,
+    "fire_detection_rate": 0.0,
+    "avg_hits": 0.2,
+    "avg_max": 0.5256988123059273,
+    "avg_tile_score": 0.0333793887086417
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 0,
+    "correct": 5,
+    "false_alarm_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.39676311016082766,
+    "avg_tile_score": 0.029745420308315517
+  }
+}
