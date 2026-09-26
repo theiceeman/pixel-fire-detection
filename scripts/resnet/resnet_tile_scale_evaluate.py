@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
     ROOT / "runs" / "classify" / "resnet50" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnet50_bcst_30" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnet50_mutliscene" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnet50_multiscene" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnet50_patch_8" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnet50_transfer_forest_to_flame" / "weights" / "best.pt",
 ]
