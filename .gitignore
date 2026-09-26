@@ -12,3 +12,4 @@ dataset.zip
 runs/**/weights/
 yolo*.pt
 models/
+cursor_firescale_data_sorting.md
