@@ -14,6 +14,10 @@ from torchvision import transforms
 
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
+    ROOT / "runs" / "classify" / "mobilenetv4" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "mobilenetv4_transfer_forest_to_flame" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "mobilenetv4_multiscene" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "mobilenetv4_bcst_60" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "mobilenetv4_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
