@@ -1,4 +1,6 @@
-# python3 ./scripts/efficientnet_scale_evaluate.py
+# python3 ./scripts/efficientnet/efficientnet_scale_evaluate.py
+# Track A: whole-image FDR on flame_scale_eval.
+# Edit WEIGHTS_PATH + OUTPUT_PATH for each strategy, then run.
 import json
 import os
 import torch
@@ -8,9 +10,10 @@ from PIL import Image
 import timm
 
 WEIGHTS_PATH = "./runs/classify/efficientnetv2/weights/best.pt"
-SCALE_DIR = "dataset/camp_scale_eval"
-OUTPUT_PATH = "scale_result.json"
+SCALE_DIR = "dataset/flame_scale_eval"
+OUTPUT_PATH = "results/efficientnet/efficientnet_flame_baseline_result.json"
 IMG_SIZE = 300
+MODEL_NAME = "tf_efficientnetv2_s.in1k"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
@@ -18,11 +21,17 @@ checkpoint = torch.load(WEIGHTS_PATH, map_location="cpu", weights_only=False)
 class_names = checkpoint["class_names"]
 FIRE_CLASS = "fire"
 
-model = timm.create_model("tf_efficientnetv2_s.in1k", pretrained=False, num_classes=len(class_names))
+model = timm.create_model(MODEL_NAME, pretrained=False, num_classes=len(class_names))
 model.load_state_dict(checkpoint["model"])
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+device = torch.device(
+    "cuda" if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available()
+    else "cpu"
+)
 model = model.to(device)
 model.eval()
+print(f"Device: {device}")
+print(f"Weights: {WEIGHTS_PATH}")
 
 transform = transforms.Compose([
     transforms.Resize((IMG_SIZE, IMG_SIZE)),
@@ -40,7 +49,15 @@ for scale in SCALES:
     confidence_missed = []
 
     if not os.path.isdir(scale_dir):
-        results[scale] = {"total": 0, "detected": 0, "missed": 0, "fire_detection_rate": 0, "avg_confidence": 0, "avg_confidence_detected": 0, "avg_confidence_missed": 0}
+        results[scale] = {
+            "total": 0,
+            "detected": 0,
+            "missed": 0,
+            "fire_detection_rate": 0,
+            "avg_confidence": 0,
+            "avg_confidence_detected": 0,
+            "avg_confidence_missed": 0,
+        }
         continue
 
     for filename in os.listdir(scale_dir):
@@ -79,8 +96,13 @@ for scale in SCALES:
         "avg_confidence_missed": sum(confidence_missed) / len(confidence_missed) if confidence_missed else 0,
     }
 
-    print(f"{scale}: {detected}/{total} detected ({results[scale]['fire_detection_rate']:.3f}), avg conf: {results[scale]['avg_confidence']:.3f}")
+    print(
+        f"{scale}: {detected}/{total} detected "
+        f"({results[scale]['fire_detection_rate']:.3f}), "
+        f"avg conf: {results[scale]['avg_confidence']:.3f}"
+    )
 
+os.makedirs(os.path.dirname(OUTPUT_PATH) or ".", exist_ok=True)
 with open(OUTPUT_PATH, "w") as f:
     json.dump(results, f, indent=2)
 

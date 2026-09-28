@@ -1,0 +1,57 @@
+{
+  "model": "resnet50_patch_8",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "class_names": [
+    "fire",
+    "non_fire"
+  ],
+  "tiny": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 6.85,
+    "avg_max": 0.9793171346187591,
+    "avg_tile_score": 0.30963049858047936
+  },
+  "small": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 116.5,
+    "avg_max": 0.9968704491853714,
+    "avg_tile_score": 0.2728099625588446
+  },
+  "medium": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 34.1,
+    "avg_max": 0.9980472266674042,
+    "avg_tile_score": 0.2793236874476489
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 1,
+    "correct": 4,
+    "false_alarm_rate": 0.2,
+    "avg_hits": 1.4,
+    "avg_max": 0.683934497833252,
+    "avg_tile_score": 0.2965483781403164
+  }
+}

@@ -1,4 +1,5 @@
-# python3 ./scripts/efficientnet/efficientnet_transfer_finetune.py
+# python3 ./scripts/efficientnet/efficientnet_multiscene_train.py
+# Requires dataset/multiscene from yolo_multiscene_train.py (or run prepare there first)
 import os
 import torch
 import torch.nn as nn
@@ -6,13 +7,16 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
-MODEL_A = "runs/classify/efficientnetv2/weights/best.pt"
-DATA_DIR = "dataset/forest_train_split"
-EPOCHS = 5
-BATCH_SIZE = 8
+DATA_DIR = "dataset/multiscene"
+EPOCHS = 20
+BATCH_SIZE = 16
 IMG_SIZE = 300
-LR = 0.0001
-SAVE_DIR = "runs/classify/efficientnetv2_transfer_forest_to_flame"
+LR = 0.001
+SAVE_DIR = "runs/classify/efficientnetv2_multiscene"
+MODEL_NAME = "tf_efficientnetv2_s.in1k"
+
+if not os.path.isdir(os.path.join(DATA_DIR, "train")):
+    raise SystemExit(f"Missing {DATA_DIR}. Run scripts/yolo/yolo_multiscene_train.py first to build it.")
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
@@ -33,11 +37,7 @@ val_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "val"), transform=tran
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
-checkpoint = torch.load(MODEL_A, map_location="cpu", weights_only=False)
-class_names = checkpoint["class_names"]
-
-model = timm.create_model("tf_efficientnetv2_s.in1k", pretrained=False, num_classes=len(class_names))
-model.load_state_dict(checkpoint["model"])
+model = timm.create_model(MODEL_NAME, pretrained=True, num_classes=2)
 device = torch.device(
     "cuda" if torch.cuda.is_available()
     else "mps" if torch.backends.mps.is_available()
@@ -77,8 +77,14 @@ for epoch in range(EPOCHS):
 
     if val_acc > best_acc:
         best_acc = val_acc
-        torch.save({"model": model.state_dict(), "class_names": class_names}, os.path.join(SAVE_DIR, "weights", "best.pt"))
+        torch.save(
+            {"model": model.state_dict(), "class_names": train_dataset.classes},
+            os.path.join(SAVE_DIR, "weights", "best.pt"),
+        )
 
-torch.save({"model": model.state_dict(), "class_names": class_names}, os.path.join(SAVE_DIR, "weights", "last.pt"))
+torch.save(
+    {"model": model.state_dict(), "class_names": train_dataset.classes},
+    os.path.join(SAVE_DIR, "weights", "last.pt"),
+)
 print(f"Best val_acc: {best_acc:.4f}")
-print(f"Done. Model B weights: {SAVE_DIR}/weights/best.pt")
+print(f"Done. Weights: {SAVE_DIR}/weights/best.pt")
