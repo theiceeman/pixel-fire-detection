@@ -9,9 +9,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/efficientnetv2_multiscene/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/efficientnetv2_bcst_30/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "./efficientnet_flame_multiscene_result.json"
+OUTPUT_PATH = "./efficientnet_flame_bcst_30_result.json"
 IMG_SIZE = 300
 MODEL_NAME = "tf_efficientnetv2_s.in1k"
 SCALES = ["tiny", "small", "medium", "large"]
