@@ -1,4 +1,4 @@
-# python3 ./scripts/efficientnet_train.py
+# python3 ./scripts/efficientnet/efficientnet_train.py
 import os
 import torch
 import torch.nn as nn
