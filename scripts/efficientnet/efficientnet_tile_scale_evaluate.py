@@ -17,7 +17,7 @@ WEIGHTS_LIST = [
     ROOT / "runs" / "classify" / "efficientnetv2" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "efficientnetv2_transfer_forest_to_flame" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "efficientnetv2_multiscene" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "efficientnetv2_bcst_60" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "efficientnetv2_bcst_30" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "efficientnetv2_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
