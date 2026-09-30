@@ -1,4 +1,5 @@
 {
+  "description":"fire-scale evaluation of baseline efficientnetv2.",
   "tiny": {
     "total": 172,
     "detected": 131,

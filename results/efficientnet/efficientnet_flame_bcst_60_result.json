@@ -1,0 +1,39 @@
+{
+  "description":"full-image based evaluation on Flame Scale Eval dataset.",
+  "tiny": {
+    "total": 172,
+    "detected": 0,
+    "missed": 172,
+    "fire_detection_rate": 0.0,
+    "avg_confidence": 0.9515551387570625,
+    "avg_confidence_detected": 0,
+    "avg_confidence_missed": 0.9515551387570625
+  },
+  "small": {
+    "total": 1583,
+    "detected": 131,
+    "missed": 1452,
+    "fire_detection_rate": 0.08275426405559065,
+    "avg_confidence": 0.9068149598956635,
+    "avg_confidence_detected": 0.7991317842752879,
+    "avg_confidence_missed": 0.9165301775308351
+  },
+  "medium": {
+    "total": 70,
+    "detected": 24,
+    "missed": 46,
+    "fire_detection_rate": 0.34285714285714286,
+    "avg_confidence": 0.9437431820801326,
+    "avg_confidence_detected": 0.8776019761959711,
+    "avg_confidence_missed": 0.978251637324043
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_confidence": 0,
+    "avg_confidence_detected": 0,
+    "avg_confidence_missed": 0
+  }
+}
