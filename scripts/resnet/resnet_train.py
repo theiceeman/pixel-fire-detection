@@ -1,4 +1,4 @@
-# python3 ./scripts/resnet_train.py
+# python3 ./scripts/resnet/resnet_train.py
 import os
 import torch
 import torch.nn as nn
