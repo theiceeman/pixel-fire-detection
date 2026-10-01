@@ -11,8 +11,8 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 299
 LR = 0.001
-SAVE_DIR = "runs/classify/inception_v3"
-MODEL_NAME = "inception_v3.tf_in1k"
+SAVE_DIR = "runs/classify/inception_resnet_v2"
+MODEL_NAME = "inception_resnet_v2.tf_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
