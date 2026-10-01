@@ -9,9 +9,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/densenet201/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/densenet201_transfer_forest_to_flame/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "results/densenet/densenet201_flame_baseline_result.json"
+OUTPUT_PATH = "results/densenet/densenet201_flame_transfer_forest_to_flame_result.json"
 IMG_SIZE = 224
 MODEL_NAME = "densenet201.tv_in1k"
 SCALES = ["tiny", "small", "medium", "large"]
