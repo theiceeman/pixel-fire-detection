@@ -9,11 +9,11 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/inception_v3/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/inception_resnet_v2/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "results/inception/inception_flame_baseline_result.json"
+OUTPUT_PATH = "results/inception/inception_resnet_v2_flame_baseline_result.json"
 IMG_SIZE = 299
-MODEL_NAME = "inception_v3.tf_in1k"
+MODEL_NAME = "inception_resnet_v2.tf_in1k"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 

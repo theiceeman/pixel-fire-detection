@@ -12,8 +12,8 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 299
 LR = 0.001
-SAVE_DIR = "runs/classify/inception_v3_multiscene"
-MODEL_NAME = "inception_v3.tf_in1k"
+SAVE_DIR = "runs/classify/inception_resnet_v2_multiscene"
+MODEL_NAME = "inception_resnet_v2.tf_in1k"
 
 if not os.path.isdir(os.path.join(DATA_DIR, "train")):
     raise SystemExit(f"Missing {DATA_DIR}. Run scripts/yolo/yolo_multiscene_train.py first to build it.")

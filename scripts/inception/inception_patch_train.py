@@ -21,8 +21,8 @@ CSV_PATH = ROOT / "images" / "patches_index.csv"
 IMAGES_DIR = ROOT / "images"
 OUT_ROOT = ROOT / "dataset" / "patches"
 RESULTS_DIR = ROOT / "results" / "inception"
-SAVE_DIR = ROOT / "runs" / "classify" / "inception_v3_patch_8"
-MODEL_NAME = "inception_v3.tf_in1k"
+SAVE_DIR = ROOT / "runs" / "classify" / "inception_resnet_v2_patch_8"
+MODEL_NAME = "inception_resnet_v2.tf_in1k"
 
 SIZE = 8
 SEED = 42
