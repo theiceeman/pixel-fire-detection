@@ -7,9 +7,9 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/resnetrs50_bcst_30/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/resnetrs50_bcst_60/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "results/resnet/resnetrs50_flame_bcst_30_result.json"
+OUTPUT_PATH = "results/resnet/resnetrs50_flame_bcst_60_result.json"
 IMG_SIZE = 224
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
