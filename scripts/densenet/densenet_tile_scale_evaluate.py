@@ -14,9 +14,9 @@ from torchvision import transforms
 
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
-    ROOT / "runs" / "classify" / "densenet121" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet121_transfer_forest_to_flame" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet121_multiscene" / "weights" / "best.pt",
+    # ROOT / "runs" / "classify" / "densenet121" / "weights" / "best.pt",
+    # ROOT / "runs" / "classify" / "densenet121_transfer_forest_to_flame" / "weights" / "best.pt",
+    # ROOT / "runs" / "classify" / "densenet121_multiscene" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "densenet121_bcst_60" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "densenet121_patch_8" / "weights" / "best.pt",
 ]
