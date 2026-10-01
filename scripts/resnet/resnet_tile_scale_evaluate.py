@@ -15,7 +15,7 @@ from torchvision import transforms
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
     ROOT / "runs" / "classify" / "resnetrs50" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnetrs50_bcst_30" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50_bcst_90" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnetrs50_multiscene" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnetrs50_patch_8" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "resnetrs50_transfer_forest_to_flame" / "weights" / "best.pt",

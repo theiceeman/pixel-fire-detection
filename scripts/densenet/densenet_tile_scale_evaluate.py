@@ -17,7 +17,7 @@ WEIGHTS_LIST = [
     ROOT / "runs" / "classify" / "densenet201" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "densenet201_transfer_forest_to_flame" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "densenet201_multiscene" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet201_bcst_60" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "densenet201_bcst_30" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "densenet201_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
