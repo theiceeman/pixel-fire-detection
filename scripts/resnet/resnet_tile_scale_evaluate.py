@@ -14,15 +14,15 @@ from torchvision import transforms
 
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
-    ROOT / "runs" / "classify" / "resnet50" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnet50_bcst_30" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnet50_multiscene" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnet50_patch_8" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "resnet50_transfer_forest_to_flame" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50_bcst_30" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50_multiscene" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50_patch_8" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "resnetrs50_transfer_forest_to_flame" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
 RESULTS_DIR = ROOT / "results" / "resnet"
-MODEL_NAME = "resnet50.a1_in1k"
+MODEL_NAME = "resnetrs50.tf_in1k"
 
 PATCH_SIZE = 8
 MAX_SIDE = 640

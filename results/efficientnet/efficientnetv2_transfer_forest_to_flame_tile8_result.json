@@ -1,0 +1,57 @@
+{
+  "model": "efficientnetv2_transfer_forest_to_flame",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "class_names": [
+    "fire",
+    "non_fire"
+  ],
+  "tiny": {
+    "total": 20,
+    "detected": 0,
+    "missed": 20,
+    "fire_detection_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.1350590854883194,
+    "avg_tile_score": 0.0329738452434619
+  },
+  "small": {
+    "total": 20,
+    "detected": 0,
+    "missed": 20,
+    "fire_detection_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.12719550132751464,
+    "avg_tile_score": 0.028757794359368948
+  },
+  "medium": {
+    "total": 20,
+    "detected": 0,
+    "missed": 20,
+    "fire_detection_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.12923283763229848,
+    "avg_tile_score": 0.032948542909423645
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 0,
+    "correct": 5,
+    "false_alarm_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.18749786764383317,
+    "avg_tile_score": 0.04161109182741992
+  }
+}

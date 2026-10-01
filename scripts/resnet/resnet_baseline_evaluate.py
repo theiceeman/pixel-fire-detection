@@ -7,7 +7,7 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/resnet50/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/resnetrs50/weights/best.pt"
 VAL_DIR = "dataset/val"
 OUTPUT_PATH = "result.json"
 IMG_SIZE = 224
@@ -17,7 +17,7 @@ checkpoint = torch.load(WEIGHTS_PATH, map_location="cpu", weights_only=False)
 class_names = checkpoint["class_names"]
 FIRE_CLASS = "fire"
 
-model = timm.create_model("resnet50.a1_in1k", pretrained=False, num_classes=len(class_names))
+model = timm.create_model("resnetrs50.tf_in1k", pretrained=False, num_classes=len(class_names))
 model.load_state_dict(checkpoint["model"])
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 model = model.to(device)

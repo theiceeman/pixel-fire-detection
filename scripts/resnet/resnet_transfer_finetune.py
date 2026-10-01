@@ -6,13 +6,13 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
-MODEL_A = "runs/classify/resnet50/weights/best.pt"
+MODEL_A = "runs/classify/resnetrs50/weights/best.pt"
 DATA_DIR = "dataset/forest_train_split"
 EPOCHS = 5
 BATCH_SIZE = 8
 IMG_SIZE = 224
 LR = 0.0001
-SAVE_DIR = "runs/classify/resnet50_transfer_forest_to_flame"
+SAVE_DIR = "runs/classify/resnetrs50_transfer_forest_to_flame"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
@@ -36,7 +36,7 @@ val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 checkpoint = torch.load(MODEL_A, map_location="cpu", weights_only=False)
 class_names = checkpoint["class_names"]
 
-model = timm.create_model("resnet50.a1_in1k", pretrained=False, num_classes=len(class_names))
+model = timm.create_model("resnetrs50.tf_in1k", pretrained=False, num_classes=len(class_names))
 model.load_state_dict(checkpoint["model"])
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 model = model.to(device)

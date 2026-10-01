@@ -12,7 +12,7 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-SAVE_DIR = "runs/classify/resnet50_multiscene"
+SAVE_DIR = "runs/classify/resnetrs50_multiscene"
 
 if not os.path.isdir(os.path.join(DATA_DIR, "train")):
     raise SystemExit(f"Missing {DATA_DIR}. Run scripts/yolo/yolo_multiscene_train.py first to build it.")
@@ -36,7 +36,7 @@ val_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "val"), transform=tran
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
-model = timm.create_model("resnet50.a1_in1k", pretrained=True, num_classes=2)
+model = timm.create_model("resnetrs50.tf_in1k", pretrained=True, num_classes=2)
 device = torch.device(
     "cuda" if torch.cuda.is_available()
     else "mps" if torch.backends.mps.is_available()

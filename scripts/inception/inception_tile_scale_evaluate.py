@@ -1,4 +1,4 @@
-# python3 ./scripts/densenet/densenet_tile_scale_evaluate.py
+# python3 ./scripts/inception/inception_tile_scale_evaluate.py
 # Same tile rule as yolo_tile_scale_evaluate.py.
 # Fire if >= MIN_HITS tiles have fire score >= STRONG.
 # Sample SAMPLE images per fire scale (fixed SEED); use all none images.
@@ -14,20 +14,20 @@ from torchvision import transforms
 
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
-    ROOT / "runs" / "classify" / "densenet201" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet201_transfer_forest_to_flame" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet201_multiscene" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet201_bcst_60" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "densenet201_patch_8" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_v3" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_v3_transfer_forest_to_flame" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_v3_multiscene" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_v3_bcst_60" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_v3_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
-RESULTS_DIR = ROOT / "results" / "densenet"
-MODEL_NAME = "densenet201.tv_in1k"
+RESULTS_DIR = ROOT / "results" / "inception"
+MODEL_NAME = "inception_v3.tf_in1k"
 
 PATCH_SIZE = 8
 MAX_SIDE = 640
 BATCH = 64
-IMG_SIZE = 224
+IMG_SIZE = 299
 STRONG = 0.7
 MIN_HITS = 2
 SAMPLE = 20
@@ -204,7 +204,7 @@ def main():
         for w in missing:
             print(f"  {w}")
     if not present:
-        raise SystemExit("No DenseNet weights found under runs/classify/")
+        raise SystemExit("No Inception weights found under runs/classify/")
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     file_lists = build_file_lists()

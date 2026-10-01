@@ -1,6 +1,6 @@
-# python3 ./scripts/densenet/densenet_patch_train.py
+# python3 ./scripts/inception/inception_patch_train.py
 # Crops 8px patches from images/cctv + images/forest using patches_index.csv,
-# then trains DenseNet classify. No FLAME eval.
+# then trains Inception classify. No FLAME eval.
 # Reuses dataset/patches/8 if it already exists (shared across backbones).
 import csv
 import json
@@ -20,9 +20,9 @@ ROOT = Path(__file__).resolve().parents[2]
 CSV_PATH = ROOT / "images" / "patches_index.csv"
 IMAGES_DIR = ROOT / "images"
 OUT_ROOT = ROOT / "dataset" / "patches"
-RESULTS_DIR = ROOT / "results" / "densenet"
-SAVE_DIR = ROOT / "runs" / "classify" / "densenet201_patch_8"
-MODEL_NAME = "densenet201.tv_in1k"
+RESULTS_DIR = ROOT / "results" / "inception"
+SAVE_DIR = ROOT / "runs" / "classify" / "inception_v3_patch_8"
+MODEL_NAME = "inception_v3.tf_in1k"
 
 SIZE = 8
 SEED = 42
@@ -30,7 +30,7 @@ TRAIN_CAP = 600
 VAL_CAP = 100
 EPOCHS = 20
 BATCH_SIZE = 16
-IMG_SIZE = 224
+IMG_SIZE = 299
 LR = 0.001
 
 
@@ -250,7 +250,7 @@ def main():
         json.dump(manifest, f, indent=2)
     print(f"Manifest: {RESULTS_DIR / 'patch_8_manifest.json'}")
 
-    print(f"\n=== training DenseNet on patch-{SIZE} ===")
+    print(f"\n=== training Inception on patch-{SIZE} ===")
     train(data_dir)
 
 

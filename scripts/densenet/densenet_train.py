@@ -11,8 +11,8 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-SAVE_DIR = "runs/classify/densenet121"
-MODEL_NAME = "densenet121.ra_in1k"
+SAVE_DIR = "runs/classify/densenet201"
+MODEL_NAME = "densenet201.tv_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 

@@ -1,4 +1,4 @@
-# python3 ./scripts/densenet/densenet_transfer_finetune.py
+# python3 ./scripts/inception/inception_transfer_finetune.py
 import os
 import torch
 import torch.nn as nn
@@ -6,14 +6,14 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
-MODEL_A = "runs/classify/densenet201/weights/best.pt"
+MODEL_A = "runs/classify/inception_v3/weights/best.pt"
 DATA_DIR = "dataset/forest_train_split"
 EPOCHS = 5
 BATCH_SIZE = 8
-IMG_SIZE = 224
+IMG_SIZE = 299
 LR = 0.0001
-SAVE_DIR = "runs/classify/densenet201_transfer_forest_to_flame"
-MODEL_NAME = "densenet201.tv_in1k"
+SAVE_DIR = "runs/classify/inception_v3_transfer_forest_to_flame"
+MODEL_NAME = "inception_v3.tf_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 

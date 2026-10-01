@@ -20,7 +20,7 @@ CSV_PATH = ROOT / "images" / "patches_index.csv"
 IMAGES_DIR = ROOT / "images"
 OUT_ROOT = ROOT / "dataset" / "patches"
 RESULTS_DIR = ROOT / "results" / "resnet"
-SAVE_DIR = ROOT / "runs" / "classify" / "resnet50_patch_8"
+SAVE_DIR = ROOT / "runs" / "classify" / "resnetrs50_patch_8"
 
 SIZE = 8
 SEED = 42
@@ -152,7 +152,7 @@ def train(data_dir: Path):
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
     model = timm.create_model(
-        "resnet50.a1_in1k",
+        "resnetrs50.tf_in1k",
         pretrained=True,
         num_classes=2,
     )

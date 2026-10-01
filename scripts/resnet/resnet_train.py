@@ -11,7 +11,7 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-SAVE_DIR = "runs/classify/resnet50"
+SAVE_DIR = "runs/classify/resnetrs50"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
@@ -32,7 +32,7 @@ val_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "val"), transform=tran
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=2, pin_memory=True)
 
-model = timm.create_model("resnet50.a1_in1k", pretrained=True, num_classes=2)
+model = timm.create_model("resnetrs50.tf_in1k", pretrained=True, num_classes=2)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 

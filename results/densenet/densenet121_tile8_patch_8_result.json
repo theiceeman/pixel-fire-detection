@@ -1,0 +1,58 @@
+{
+  "model": "densenet121_patch_8",
+  "description":"tile-8 patch inference evaluation.",
+  "patch_size": 8,
+  "strong": 0.7,
+  "min_hits": 2,
+  "sample": 20,
+  "seed": 42,
+  "class_names": [
+    "fire",
+    "non_fire"
+  ],
+  "tiny": {
+    "total": 20,
+    "detected": 19,
+    "missed": 1,
+    "fire_detection_rate": 0.95,
+    "avg_hits": 3.05,
+    "avg_max": 0.8160892367362976,
+    "avg_tile_score": 0.33749404364087
+  },
+  "small": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 88.9,
+    "avg_max": 0.9040523916482925,
+    "avg_tile_score": 0.28946676381332026
+  },
+  "medium": {
+    "total": 20,
+    "detected": 20,
+    "missed": 0,
+    "fire_detection_rate": 1.0,
+    "avg_hits": 21.15,
+    "avg_max": 0.9176888823509216,
+    "avg_tile_score": 0.28709353897984446
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_hits": 0,
+    "avg_max": 0,
+    "avg_tile_score": 0
+  },
+  "none": {
+    "total": 5,
+    "false_alarms": 0,
+    "correct": 5,
+    "false_alarm_rate": 0.0,
+    "avg_hits": 0.0,
+    "avg_max": 0.588654637336731,
+    "avg_tile_score": 0.28353098040928143
+  }
+}

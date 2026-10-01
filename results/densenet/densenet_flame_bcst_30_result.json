@@ -1,0 +1,39 @@
+{
+  "description":"full-image based evaluation.",
+  "tiny": {
+    "total": 172,
+    "detected": 12,
+    "missed": 160,
+    "fire_detection_rate": 0.06976744186046512,
+    "avg_confidence": 0.8573374089806579,
+    "avg_confidence_detected": 0.5448057502508163,
+    "avg_confidence_missed": 0.880777283385396
+  },
+  "small": {
+    "total": 1583,
+    "detected": 282,
+    "missed": 1301,
+    "fire_detection_rate": 0.1781427668982944,
+    "avg_confidence": 0.8338434701092395,
+    "avg_confidence_detected": 0.6413015266682239,
+    "avg_confidence_missed": 0.8755781573116733
+  },
+  "medium": {
+    "total": 70,
+    "detected": 0,
+    "missed": 70,
+    "fire_detection_rate": 0.0,
+    "avg_confidence": 0.8878103094441551,
+    "avg_confidence_detected": 0,
+    "avg_confidence_missed": 0.8878103094441551
+  },
+  "large": {
+    "total": 0,
+    "detected": 0,
+    "missed": 0,
+    "fire_detection_rate": 0,
+    "avg_confidence": 0,
+    "avg_confidence_detected": 0,
+    "avg_confidence_missed": 0
+  }
+}

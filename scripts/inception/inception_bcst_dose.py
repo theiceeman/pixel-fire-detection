@@ -1,4 +1,4 @@
-# python3 ./scripts/resnet/resnet_bcst_dose.py
+# python3 ./scripts/inception/inception_bcst_dose.py
 # Uses dataset/bcst_aug with train/{fire,non_fire,firelike} + val/{fire,non_fire}.
 # For each dose N: mix N firelike into non_fire (600/600), train only.
 import json
@@ -16,13 +16,14 @@ from torchvision import datasets, transforms
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "dataset" / "bcst_aug"
 TMP = ROOT / "dataset" / "bcst_dose_tmp"
-RESULTS_DIR = ROOT / "results" / "resnet"
+RESULTS_DIR = ROOT / "results" / "inception"
 DOSES = [30, 60, 90]
 SEED = 42
 EPOCHS = 20
 BATCH_SIZE = 16
-IMG_SIZE = 224
+IMG_SIZE = 299
 LR = 0.001
+MODEL_NAME = "inception_v3.tf_in1k"
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
 
@@ -79,13 +80,14 @@ def train_dose(data_dir: Path, save_dir: Path):
     train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
 
-    model = timm.create_model("resnetrs50.tf_in1k", pretrained=True, num_classes=2)
+    model = timm.create_model(MODEL_NAME, pretrained=True, num_classes=2)
     device = torch.device(
         "cuda" if torch.cuda.is_available()
         else "mps" if torch.backends.mps.is_available()
         else "cpu"
     )
     model = model.to(device)
+    print(f"Device: {device}")
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR)
     criterion = nn.CrossEntropyLoss()
 
@@ -134,7 +136,10 @@ def main():
     firelike = list_images(SRC / "train" / "firelike")
     non_fire = list_images(SRC / "train" / "non_fire")
     if len(firelike) < max(DOSES) or len(non_fire) < 600:
-        raise SystemExit(f"Need >= {max(DOSES)} firelike and 600 non_fire; got {len(firelike)}, {len(non_fire)}")
+        raise SystemExit(
+            f"Need >= {max(DOSES)} firelike and 600 non_fire; "
+            f"got {len(firelike)}, {len(non_fire)}"
+        )
 
     rng = random.Random(SEED)
     firelike_shuffled = firelike[:]
@@ -152,7 +157,7 @@ def main():
 
         print(f"\n=== dose N={n} ===")
         data_dir = build_dose(n, fl_pick, nf_pick)
-        save_dir = ROOT / "runs" / "classify" / f"resnetrs50_bcst_{n}" / "weights"
+        save_dir = ROOT / "runs" / "classify" / f"inception_v3_bcst_{n}" / "weights"
         train_dose(data_dir, save_dir)
 
     with open(RESULTS_DIR / "bcst_dose_manifest.json", "w") as f:

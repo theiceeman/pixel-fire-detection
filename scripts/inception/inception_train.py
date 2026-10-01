@@ -1,4 +1,4 @@
-# python3 ./scripts/densenet/densenet_transfer_finetune.py
+# python3 ./scripts/inception/inception_train.py
 import os
 import torch
 import torch.nn as nn
@@ -6,14 +6,13 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
-MODEL_A = "runs/classify/densenet201/weights/best.pt"
-DATA_DIR = "dataset/forest_train_split"
-EPOCHS = 5
-BATCH_SIZE = 8
-IMG_SIZE = 224
-LR = 0.0001
-SAVE_DIR = "runs/classify/densenet201_transfer_forest_to_flame"
-MODEL_NAME = "densenet201.tv_in1k"
+DATA_DIR = "dataset"
+EPOCHS = 20
+BATCH_SIZE = 16
+IMG_SIZE = 299
+LR = 0.001
+SAVE_DIR = "runs/classify/inception_v3"
+MODEL_NAME = "inception_v3.tf_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
@@ -31,14 +30,10 @@ transform_val = transforms.Compose([
 
 train_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "train"), transform=transform_train)
 val_dataset = datasets.ImageFolder(os.path.join(DATA_DIR, "val"), transform=transform_val)
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
+val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, num_workers=2, pin_memory=True)
 
-checkpoint = torch.load(MODEL_A, map_location="cpu", weights_only=False)
-class_names = checkpoint["class_names"]
-
-model = timm.create_model(MODEL_NAME, pretrained=False, num_classes=len(class_names))
-model.load_state_dict(checkpoint["model"])
+model = timm.create_model(MODEL_NAME, pretrained=True, num_classes=2)
 device = torch.device(
     "cuda" if torch.cuda.is_available()
     else "mps" if torch.backends.mps.is_available()
@@ -79,13 +74,13 @@ for epoch in range(EPOCHS):
     if val_acc > best_acc:
         best_acc = val_acc
         torch.save(
-            {"model": model.state_dict(), "class_names": class_names},
+            {"model": model.state_dict(), "class_names": train_dataset.classes},
             os.path.join(SAVE_DIR, "weights", "best.pt"),
         )
 
 torch.save(
-    {"model": model.state_dict(), "class_names": class_names},
+    {"model": model.state_dict(), "class_names": train_dataset.classes},
     os.path.join(SAVE_DIR, "weights", "last.pt"),
 )
 print(f"Best val_acc: {best_acc:.4f}")
-print(f"Done. Model B weights: {SAVE_DIR}/weights/best.pt")
+print(f"Done. Weights: {SAVE_DIR}/weights/best.pt")
