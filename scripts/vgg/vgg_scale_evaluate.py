@@ -9,11 +9,11 @@ from torchvision import transforms
 from PIL import Image
 import timm
 
-WEIGHTS_PATH = "./runs/classify/vgg16/weights/best.pt"
+WEIGHTS_PATH = "./runs/classify/vgg19/weights/best.pt"
 SCALE_DIR = "dataset/flame_scale_eval"
-OUTPUT_PATH = "results/vgg/vgg_flame_baseline_result.json"
+OUTPUT_PATH = "results/vgg/vgg19_flame_baseline_result.json"
 IMG_SIZE = 224
-MODEL_NAME = "vgg16.tv_in1k"
+MODEL_NAME = "vgg19.tv_in1k"
 SCALES = ["tiny", "small", "medium", "large"]
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 

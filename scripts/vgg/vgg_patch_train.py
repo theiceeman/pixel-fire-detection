@@ -21,8 +21,8 @@ CSV_PATH = ROOT / "images" / "patches_index.csv"
 IMAGES_DIR = ROOT / "images"
 OUT_ROOT = ROOT / "dataset" / "patches"
 RESULTS_DIR = ROOT / "results" / "vgg"
-SAVE_DIR = ROOT / "runs" / "classify" / "vgg16_patch_8"
-MODEL_NAME = "vgg16.tv_in1k"
+SAVE_DIR = ROOT / "runs" / "classify" / "vgg19_patch_8"
+MODEL_NAME = "vgg19.tv_in1k"
 
 SIZE = 8
 SEED = 42

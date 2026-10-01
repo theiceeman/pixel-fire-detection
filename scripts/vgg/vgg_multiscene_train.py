@@ -12,8 +12,8 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-SAVE_DIR = "runs/classify/vgg16_multiscene"
-MODEL_NAME = "vgg16.tv_in1k"
+SAVE_DIR = "runs/classify/vgg19_multiscene"
+MODEL_NAME = "vgg19.tv_in1k"
 
 if not os.path.isdir(os.path.join(DATA_DIR, "train")):
     raise SystemExit(f"Missing {DATA_DIR}. Run scripts/yolo/yolo_multiscene_train.py first to build it.")

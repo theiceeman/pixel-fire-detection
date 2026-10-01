@@ -6,14 +6,14 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import timm
 
-MODEL_A = "runs/classify/vgg16/weights/best.pt"
+MODEL_A = "runs/classify/vgg19/weights/best.pt"
 DATA_DIR = "dataset/forest_train_split"
 EPOCHS = 5
 BATCH_SIZE = 8
 IMG_SIZE = 224
 LR = 0.0001
-SAVE_DIR = "runs/classify/vgg16_transfer_forest_to_flame"
-MODEL_NAME = "vgg16.tv_in1k"
+SAVE_DIR = "runs/classify/vgg19_transfer_forest_to_flame"
+MODEL_NAME = "vgg19.tv_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 

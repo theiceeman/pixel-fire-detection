@@ -23,7 +23,7 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-MODEL_NAME = "vgg16.tv_in1k"
+MODEL_NAME = "vgg19.tv_in1k"
 VALID_EXT = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
 
@@ -157,7 +157,7 @@ def main():
 
         print(f"\n=== dose N={n} ===")
         data_dir = build_dose(n, fl_pick, nf_pick)
-        save_dir = ROOT / "runs" / "classify" / f"vgg16_bcst_{n}" / "weights"
+        save_dir = ROOT / "runs" / "classify" / f"vgg19_bcst_{n}" / "weights"
         train_dose(data_dir, save_dir)
 
     with open(RESULTS_DIR / "bcst_dose_manifest.json", "w") as f:

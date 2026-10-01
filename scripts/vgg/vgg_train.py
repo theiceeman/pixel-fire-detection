@@ -11,8 +11,8 @@ EPOCHS = 20
 BATCH_SIZE = 16
 IMG_SIZE = 224
 LR = 0.001
-SAVE_DIR = "runs/classify/vgg16"
-MODEL_NAME = "vgg16.tv_in1k"
+SAVE_DIR = "runs/classify/vgg19"
+MODEL_NAME = "vgg19.tv_in1k"
 
 os.makedirs(os.path.join(SAVE_DIR, "weights"), exist_ok=True)
 
