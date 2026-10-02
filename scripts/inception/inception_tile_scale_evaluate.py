@@ -15,10 +15,10 @@ from torchvision import transforms
 ROOT = Path(__file__).resolve().parents[2]
 WEIGHTS_LIST = [
     # ROOT / "runs" / "classify" / "inception_resnet_v2" / "weights" / "best.pt",
-    # ROOT / "runs" / "classify" / "inception_resnet_v2_transfer_forest_to_flame" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "inception_resnet_v2_multiscene" / "weights" / "best.pt",
-    # ROOT / "runs" / "classify" / "inception_resnet_v2_bcst_60" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "inception_resnet_v2_patch_8" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_resnet_v2_transfer_forest_to_flame" / "weights" / "best.pt",
+    # ROOT / "runs" / "classify" / "inception_resnet_v2_multiscene" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "inception_resnet_v2_bcst_60" / "weights" / "best.pt",
+    # ROOT / "runs" / "classify" / "inception_resnet_v2_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
 RESULTS_DIR = ROOT / "results" / "inception"
