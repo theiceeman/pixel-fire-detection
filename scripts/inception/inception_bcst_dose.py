@@ -17,7 +17,11 @@ ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "dataset" / "bcst_aug"
 TMP = ROOT / "dataset" / "bcst_dose_tmp"
 RESULTS_DIR = ROOT / "results" / "inception"
-DOSES = [30, 60, 90]
+DOSES = [
+    # 30,
+          60
+        #   , 90
+          ]
 SEED = 42
 EPOCHS = 20
 BATCH_SIZE = 16
