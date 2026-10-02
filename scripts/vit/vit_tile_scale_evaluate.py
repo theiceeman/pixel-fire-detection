@@ -17,7 +17,7 @@ WEIGHTS_LIST = [
     ROOT / "runs" / "classify" / "vit_small" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "vit_small_transfer_forest_to_flame" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "vit_small_multiscene" / "weights" / "best.pt",
-    ROOT / "runs" / "classify" / "vit_small_bcst_60" / "weights" / "best.pt",
+    ROOT / "runs" / "classify" / "vit_small_bcst_30" / "weights" / "best.pt",
     ROOT / "runs" / "classify" / "vit_small_patch_8" / "weights" / "best.pt",
 ]
 SCALE_DIR = ROOT / "dataset" / "flame_scale_eval"
