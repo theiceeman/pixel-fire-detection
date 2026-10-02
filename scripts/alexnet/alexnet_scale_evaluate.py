@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
 from PIL import Image
 from torchvision import transforms
